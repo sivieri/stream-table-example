@@ -38,7 +38,7 @@ object Producers {
 
         val pf = DefaultKafkaProducerFactory<String, Long>(producerProps1)
         val template = KafkaTemplate(pf, true)
-        template.defaultTopic = "users-clicks-count"
+        template.defaultTopic = "users-clicks-count-2"
 
         userClicks.forEach { keyValue ->
             template.sendDefault(keyValue.key, keyValue.value)
@@ -74,7 +74,7 @@ object Producers {
 
         val pf1 = DefaultKafkaProducerFactory<String, String>(producerProps2)
         val template1 = KafkaTemplate(pf1, true)
-        template1.defaultTopic = "users-regions"
+        template1.defaultTopic = "users-regions-2"
 
         userRegions.forEach { keyValue ->
             template1.sendDefault(keyValue.key, keyValue.value)

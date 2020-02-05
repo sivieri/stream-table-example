@@ -1,16 +1,19 @@
 spring.application.name: streams-tables-example
 spring.cloud.stream.bindings.usersClicksIn:
-  destination: users-clicks-count
+  destination: users-clicks-count-2
 spring.cloud.stream.bindings.usersRegionsIn:
-  destination: users-regions
+  destination: users-regions-2
 spring.cloud.stream.bindings.clicksRegionsOut:
-  destination: clicks-regions-count
+  destination: clicks-regions-count-2
   producer:
     streamPartitionerBeanName: clicksRegionsStreamPartitioner
 spring.cloud.stream.bindings.clicksRegionsIn:
-  destination: clicks-regions-count
+  destination: clicks-regions-count-2
 spring.cloud.stream.kafka.streams.binder:
   applicationId: streams-tables-example-id
+  autoCreateTopics: true
+  autoAddPartitions: true
+  minPartitionCount: 2
   configuration:
     default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
     default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
