@@ -1,0 +1,19 @@
+spring.application.name: streams-tables-example
+spring.cloud.stream.bindings.usersClicksIn:
+  destination: users-clicks-count
+spring.cloud.stream.bindings.usersRegionsIn:
+  destination: users-regions
+spring.cloud.stream.bindings.clicksRegionsOut:
+  destination: clicks-regions-count
+  producer:
+    streamPartitionerBeanName: clicksRegionsStreamPartitioner
+spring.cloud.stream.bindings.clicksRegionsIn:
+  destination: clicks-regions-count
+spring.cloud.stream.kafka.streams.binder:
+  applicationId: streams-tables-example-id
+  configuration:
+    default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+    default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+    commit.interval.ms: 1000
+    processing.guarantee: exactly_once
+    default.production.exception.handler: join2.CustomProductionExceptionHandler
