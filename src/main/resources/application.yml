@@ -5,10 +5,11 @@ spring.cloud.stream.bindings.usersRegionsIn:
   destination: users-regions-2
 spring.cloud.stream.bindings.clicksRegionsOut:
   destination: clicks-regions-count-2
-  producer:
-    streamPartitionerBeanName: clicksRegionsStreamPartitioner
 spring.cloud.stream.bindings.clicksRegionsIn:
   destination: clicks-regions-count-2
+spring.cloud.stream.kafka.streams.bindings.clicksRegionsOut:
+  producer:
+    streamPartitionerBeanName: clicksRegionsStreamPartitioner
 spring.cloud.stream.kafka.streams.binder:
   applicationId: streams-tables-example-id
   autoCreateTopics: true
